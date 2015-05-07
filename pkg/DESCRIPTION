@@ -1,0 +1,15 @@
+Package: odeintr
+Type: Package
+Title: C++ ODE Solvers Compiled on-Demand
+Version: 1.0
+Date: 2015-02-13
+Author: Timothy H. Keitt
+Maintainer: Timothy H. Keitt <tkeitt@gmail.com>
+Description: This package wraps the Boost ODEINT library for integration of differential equations.
+URL: https://github.com/thk686/odeintr
+URL: http://www.boost.org/doc/libs/release/libs/numeric/odeint/
+URL: http://www.keittlab.org/
+License: GPL (>= 2)
+Imports: Rcpp (>= 0.10.0)
+LinkingTo: Rcpp, BH
+
