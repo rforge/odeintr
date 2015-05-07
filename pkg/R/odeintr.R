@@ -218,7 +218,7 @@ integrate_sys = function(sys, init, duration,
 #'    data frame \cr
 #'  \code{name_at} \tab
 #'    specified observer calls \tab
-#'    \code{init, times, step_size = 1.0} \tab
+#'    \code{init, times, step_size = 1.0, start = 0.0} \tab
 #'    data frame \cr
 #'  \code{name_continue_at} \tab
 #'    specified observer calls starting from previous final state \tab
@@ -343,7 +343,7 @@ compile_sys = function(name, sys,
       }
       if (name %in% search())
         detach(pos = match(name, search()))
-      attach(env, name = name)
+      do.call("attach", list(what = env, name = name))
     }
   }
   return(invisible(code))
@@ -424,11 +424,14 @@ compile_sys = function(name, sys,
 #' at = 10 ^ seq(-5, 5, len = 400)
 #' x = robertson_at(init.cond, at)
 #' par(mfrow = c(3, 1), mar = rep(0.5, 4), oma = rep(5, 4), xpd = NA)
-#' plot(x[, 1:2], type = "l", lwd = 3, col = "steelblue", log = "x", axes = F, xlab = NA)
+#' plot(x[, 1:2], type = "l", lwd = 3,
+#'      col = "steelblue", log = "x", axes = F, xlab = NA)
 #' axis(2); box()
-#' plot(x[, c(1, 3)], type = "l", lwd = 3, col = "steelblue", log = "x", axes = F, xlab = NA)
+#' plot(x[, c(1, 3)], type = "l", lwd = 3,
+#'      col = "steelblue", log = "x", axes = F, xlab = NA)
 #' axis(4); box()
-#' plot(x[, c(1, 4)], type = "l", lwd = 3, col = "steelblue", log = "x", axes = F)
+#' plot(x[, c(1, 4)], type = "l", lwd = 3,
+#'      col = "steelblue", log = "x", axes = F)
 #' axis(2); axis(1); box()
 #' }
 #' @rdname implicit
@@ -481,7 +484,7 @@ compile_implicit = function(name, sys,
     {
       if (name %in% search())
         detach(pos = match(name, search()))
-      attach(env, name = name)
+      do.call("attach", list(what = env, name = name))
     }
   }
   return(invisible(code))
