@@ -1,10 +1,12 @@
 // Copyright Timothy H. Keitt 2015
 // See license for odeintr package
 
+// [[Rcpp::depends(odeintr)]]
+
 #include <Rcpp.h>
 // [[Rcpp::plugins(cpp11)]]
 
-// [[Rcpp::depends(odeintr)]]
+// [[Rcpp::depends(BH)]]
 #include "boost/numeric/odeint.hpp"
 namespace odeint = boost::numeric::odeint;
 
@@ -30,6 +32,8 @@ namespace odeintr
   static Rcpp::Function recf("c"), proc("c");
   
   __GLOBALS__;
+  
+  #include "utils.h"
   
   static void
   sys(const state_type x, state_type &dxdt, const double t)
